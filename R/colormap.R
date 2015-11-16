@@ -1,6 +1,6 @@
 colormap <-
 function(modgamobj, map=NULL, add=F, contours="none", mapmin=NULL, mapmax=NULL, 
-	arrow=T, axes=F, ptsize=0.9, alpha=0.05, col=NULL, leglab=F, mar=F, bty='n', main='', ...) {
+	arrow=T, axes=F, ptsize=0.9, alpha=0.05, col=NULL, leglab='', mar=F, bty='n', main='', xlab=NULL, ylab=NULL, ...) {
 	if (!is.null(modgamobj$OR)) fitvals=modgamobj$OR else fitvals=modgamobj$fit 
 	results = cbind(modgamobj$grid,fitvals)
 	if (!is.null(modgamobj$pointwise)) results = cbind(results,modgamobj$pointwise)
@@ -41,7 +41,7 @@ function(modgamobj, map=NULL, add=F, contours="none", mapmin=NULL, mapmax=NULL,
 	  }
 		plot(modgamobj$grid,col=col.seq[grad],pch=15,cex=ptsize,type="p",
 			 xlim=c(dataXmin-0.4*offsetX,dataXmax+0.4*offsetX),
-			 ylim=c(dataYmin-0.8*offsetY,dataYmax),ann=F,axes=F,bty=bty,main=main)
+			 ylim=c(dataYmin-0.8*offsetY,dataYmax),ann=F,axes=F,bty=bty,main=main,xlab=xlab,ylab=ylab)
 	   }  else
 	if (axes==T) {
 #		par(mai=c(1.52,0.82,0.82,1.42))
@@ -51,7 +51,7 @@ function(modgamobj, map=NULL, add=F, contours="none", mapmin=NULL, mapmax=NULL,
 			par(mai=c(1,0.82,1,0.5))
 	  }
 		plot(modgamobj$grid,col=col.seq[grad],pch=15,cex=ptsize,type="p",
-			xlab="", xaxt="n", bty=bty, main=main)
+			xlab="", xaxt="n", bty=bty, main=main,xlab=xlab,ylab=ylab)
 		axis(3)
 		mtext(names(modgamobj$grid[1]), side=3, line=3)
 	}
@@ -83,11 +83,11 @@ function(modgamobj, map=NULL, add=F, contours="none", mapmin=NULL, mapmax=NULL,
 	}
 		
 	# LEGEND
-	if (!leglab) {
+	if (leglab == '') {
 	  if (!is.null(modgamobj$OR)) leglab = "Odds Ratios" else leglab = "Predicted Values"
 	  if (!is.null(modgamobj$m)) leglab = paste(modgamobj$m,leglab)
 	}
-    fY = 0.5 + 0.5*(axes==T)
+  fY = 0.5 + 0.5*(axes==T)
 	ypos = dataYmin-fY*offsetY
 	len = (dataXmax-dataXmin)*7/12
 	points(dataXmin+(1:2252*len/2252),rep(ypos,2252),cex=1.6,col=cp[2253-1:2252],pch=15)
