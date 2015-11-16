@@ -25,11 +25,10 @@ function(modgamobj, map=NULL, add=F, contours="none", mapmin=NULL, mapmax=NULL,
 	qu = seq(mapmin,mapmax,length=2251)
 	if (is.null(col)) {
 	  cp = rainbow(2252,start=0,end=0.66)
-  	col.seq = rev(cp)
 	} else {
 	  cp = col(2252)
-	  col.seq = cp
 	}
+	col.seq = rev(cp)
 	grad = cut(results[,3],breaks=c(0,qu,Inf),labels=F)
 	par(xpd=TRUE)
 	if (add==T) points(modgamobj$grid,col=col.seq[grad],pch=15,cex=ptsize) else
