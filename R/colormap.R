@@ -51,7 +51,7 @@ function(modgamobj, map=NULL, add=F, contours="none", mapmin=NULL, mapmax=NULL,
 			par(mai=c(1,0.82,1,0.5))
 	  }
 		plot(modgamobj$grid,col=col.seq[grad],pch=15,cex=ptsize,type="p",
-			xlab="", xaxt="n", bty=bty, main=main,xlab=xlab,ylab=ylab)
+			xaxt="n", bty=bty, main=main,xlab=xlab,ylab=ylab)
 		axis(3)
 		mtext(names(modgamobj$grid[1]), side=3, line=3)
 	}
