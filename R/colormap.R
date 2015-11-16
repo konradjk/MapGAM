@@ -1,6 +1,6 @@
 colormap <-
 function(modgamobj, map=NULL, add=F, contours="none", mapmin=NULL, mapmax=NULL, 
-	arrow=T, axes=F, ptsize=0.9, alpha=0.05, col=NULL) {
+	arrow=T, axes=F, ptsize=0.9, alpha=0.05, col=NULL, ...) {
 	if (!is.null(modgamobj$OR)) fitvals=modgamobj$OR else fitvals=modgamobj$fit 
 	results = cbind(modgamobj$grid,fitvals)
 	if (!is.null(modgamobj$pointwise)) results = cbind(results,modgamobj$pointwise)
@@ -25,10 +25,11 @@ function(modgamobj, map=NULL, add=F, contours="none", mapmin=NULL, mapmax=NULL,
 	qu = seq(mapmin,mapmax,length=2251)
 	if (is.null(col)) {
 	  cp = rainbow(2252,start=0,end=0.66)
+  	col.seq = rev(cp)
 	} else {
 	  cp = col(2252)
+	  col.seq = cp
 	}
-	col.seq = rev(cp)
 	grad = cut(results[,3],breaks=c(0,qu,Inf),labels=F)
 	par(xpd=TRUE)
 	if (add==T) points(modgamobj$grid,col=col.seq[grad],pch=15,cex=ptsize) else
@@ -36,13 +37,13 @@ function(modgamobj, map=NULL, add=F, contours="none", mapmin=NULL, mapmax=NULL,
 		par(mai=c(0,0.35,0.7,0.35))
 		plot(modgamobj$grid,col=col.seq[grad],pch=15,cex=ptsize,type="p",
 			 xlim=c(dataXmin-0.4*offsetX,dataXmax+0.4*offsetX),
-			 ylim=c(dataYmin-0.8*offsetY,dataYmax),ann=F,axes=F)
+			 ylim=c(dataYmin-0.8*offsetY,dataYmax),ann=F,axes=F, ...)
 	   }  else
 	if (axes==T) {
 #		par(mai=c(1.52,0.82,0.82,1.42))
 		par(mai=c(1,0.82,1,0.5))
 		plot(modgamobj$grid,col=col.seq[grad],pch=15,cex=ptsize,type="p",
-			xlab="", xaxt="n")
+			xlab="", xaxt="n", ...)
 		axis(3)
 		mtext(names(modgamobj$grid[1]), side=3, line=3)
 	}
