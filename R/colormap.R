@@ -41,7 +41,7 @@ function(modgamobj, map=NULL, add=F, contours="none", mapmin=NULL, mapmax=NULL,
 	  }
 		plot(modgamobj$grid,col=col.seq[grad],pch=15,cex=ptsize,type="p",
 			 xlim=c(dataXmin-0.4*offsetX,dataXmax+0.4*offsetX),
-			 ylim=c(dataYmin-0.8*offsetY,dataYmax),ann=F,axes=F,bty=bty,main=main)
+			 ylim=c(dataYmin-0.8*offsetY,dataYmax),ann=F,axes=F,bty=bty,main=main, xlab='', ylab='')
 	   }  else
 	if (axes==T) {
 #		par(mai=c(1.52,0.82,0.82,1.42))
@@ -51,7 +51,7 @@ function(modgamobj, map=NULL, add=F, contours="none", mapmin=NULL, mapmax=NULL,
 			par(mai=c(1,0.82,1,0.5))
 	  }
 		plot(modgamobj$grid,col=col.seq[grad],pch=15,cex=ptsize,type="p",
-			xaxt="n", bty=bty, main=main)
+			xaxt="n", bty=bty, main=main, xlab='', ylab='')
 		axis(3)
 		#mtext(names(modgamobj$grid[1]), side=3, line=3)
 	}
