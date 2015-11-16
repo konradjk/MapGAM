@@ -26,7 +26,7 @@ function(modgamobj, map=NULL, add=F, contours="none", mapmin=NULL, mapmax=NULL,
 	if (is.null(col)) {
 	  cp = rainbow(2252,start=0,end=0.66)
 	} else {
-	  cp = col(2252,start=0,end=66)
+	  cp = col(2252)
 	}
 	col.seq = rev(cp)
 	grad = cut(results[,3],breaks=c(0,qu,Inf),labels=F)
