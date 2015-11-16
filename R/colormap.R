@@ -37,7 +37,7 @@ function(modgamobj, map=NULL, add=F, contours="none", mapmin=NULL, mapmax=NULL,
 		par(mai=c(0,0.35,0.7,0.35))
 		plot(modgamobj$grid,col=col.seq[grad],pch=15,cex=ptsize,type="p",
 			 xlim=c(dataXmin-0.4*offsetX,dataXmax+0.4*offsetX),
-			 ylim=c(dataYmin-0.8*offsetY,dataYmax),ann=F,axes=F, ...)
+			 ylim=c(dataYmin-0.8*offsetY,dataYmax),ann=F,axes=F)
 	   }  else
 	if (axes==T) {
 #		par(mai=c(1.52,0.82,0.82,1.42))
