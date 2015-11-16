@@ -52,8 +52,8 @@ function(modgamobj, map=NULL, add=F, contours="none", mapmin=NULL, mapmax=NULL,
 	  }
 		plot(modgamobj$grid,col=col.seq[grad],pch=15,cex=ptsize,type="p",
 			xaxt="n", bty=bty, main=main,xlab=xlab,ylab=ylab)
-		#axis(3)
-		mtext(names(modgamobj$grid[1]), side=3, line=3)
+		axis(3)
+		#mtext(names(modgamobj$grid[1]), side=3, line=3)
 	}
 	if (!is.null(map)) {
 		if (class(map)=="SpatialPolygonsDataFrame") plot(map, border=gray(0.3), add=T) else {
