@@ -1,6 +1,6 @@
 colormap <-
 function(modgamobj, map=NULL, add=F, contours="none", mapmin=NULL, mapmax=NULL, 
-	arrow=T, axes=F, ptsize=0.9, alpha=0.05) {
+	arrow=T, axes=F, ptsize=0.9, alpha=0.05, col=NULL) {
 	if (!is.null(modgamobj$OR)) fitvals=modgamobj$OR else fitvals=modgamobj$fit 
 	results = cbind(modgamobj$grid,fitvals)
 	if (!is.null(modgamobj$pointwise)) results = cbind(results,modgamobj$pointwise)
@@ -23,7 +23,11 @@ function(modgamobj, map=NULL, add=F, contours="none", mapmin=NULL, mapmax=NULL,
 	offsetX=(dataXmax-dataXmin)/5
 	offsetY=(dataYmax-dataYmin)/5
 	qu = seq(mapmin,mapmax,length=2251)
-	cp = rainbow(2252,start=0,end=0.66)
+	if (is.null(col)) {
+	  cp = rainbow(2252,start=0,end=0.66)
+	} else {
+	  cp = col(2252,start=0,end=66)
+	}
 	col.seq = rev(cp)
 	grad = cut(results[,3],breaks=c(0,qu,Inf),labels=F)
 	par(xpd=TRUE)
